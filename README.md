@@ -1,3 +1,11 @@
+# Mock-Messenger App
+
+### TODO
+1. Open app in a fixed window size. 
+2. Research what else is needed for app to run.
+    - socket.io
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
