@@ -1,0 +1,17 @@
+/* Login Page */
+
+.login-container {
+    height: 100vh;
+    display: grid;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-rows: 1fr 1fr 1fr; 
+    grid-template-areas: 
+    "."
+    "login-form"
+    ".";
+}
+
+.login-form {
+    grid-area: login-form
+}
