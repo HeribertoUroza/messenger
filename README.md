@@ -4,6 +4,7 @@
 1. Open app in a fixed window size. 
 2. Research what else is needed for app to run.
     - socket.io
+3. Implement FireBase for logging in
 
 ### Research Info
 - https://medium.com/@coderacademy/you-can-build-an-fb-messenger-style-chat-app-with-reactjs-heres-how-intermediate-211b523838ad
