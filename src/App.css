@@ -5,13 +5,27 @@
     display: grid;
     margin-left: 10%;
     margin-right: 10%;
-    grid-template-rows: 1fr 1fr 1fr; 
-    grid-template-areas: 
-    "."
-    "login-form"
-    ".";
+    grid-template-rows: .5fr .5fr 1fr; 
+    grid-template-areas:
+    "login-logo" 
+    "login-title"
+    "login-form";
+}
+
+.login-logo {
+    grid-area: login-logo;
+    width: 100%
+}
+
+.login-title {
+    grid-area: login-title;
+    text-align: center;
 }
 
 .login-form {
-    grid-area: login-form
+    grid-area: login-form;
+}
+
+.login-input {
+    text-align: center;
 }
