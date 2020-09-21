@@ -8,7 +8,17 @@ import Image from 'react-bootstrap/Image';
 // LOGO IMPORT
 import Logo from '../assets/Messenger_Logo.jpg'
 
-function Login() {
+function Login(props) {
+    
+
+    const handleLogin = e => {
+        if(e.target.name === 'username'){
+            props.handleUserName(e.target.value)
+        } else {
+            props.handlePassWord(e.target.value)
+        }
+    }
+
     return (
         <>
             <div className='login-container'>
@@ -22,8 +32,21 @@ function Login() {
                     <FormControl
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
-                        placeholder='Enter Your Name To Login'
+                        placeholder='Enter Your Name'
                         className='login-input'
+                        onChange={handleLogin}
+                        type='text'
+                        name='username'
+                        autoComplete='false'
+                    />
+                    <FormControl
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                        placeholder='Enter Your Password'
+                        className='login-input'
+                        onChange={handleLogin}
+                        type='password'
+                        name='password'
                     />
                 </InputGroup>
             </div>    
