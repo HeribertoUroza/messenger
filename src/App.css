@@ -5,7 +5,7 @@
     display: grid;
     margin-left: 10%;
     margin-right: 10%;
-    grid-template-rows: .5fr .5fr 1fr; 
+    grid-template-rows: .5fr .5fr 1fr 1fr; 
     grid-template-areas:
     "login-logo" 
     "login-title"
@@ -22,10 +22,28 @@
     text-align: center;
 }
 
-.login-form {
+/* .login-form {
     grid-area: login-form;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%
+} */
+
+/* .input-group {
+    width: 100%;
+    text-align: center;
+    grid-area: login-form;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+} */
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
+    width: 100% !important;
+    text-align: center;
 }
 
-.login-input {
-    text-align: center;
+.input-group {
+    display: grid !important;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto;
 }

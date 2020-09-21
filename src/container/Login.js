@@ -4,6 +4,7 @@ import React from 'react';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
 
 // LOGO IMPORT
 import Logo from '../assets/Messenger_Logo.jpg'
@@ -33,21 +34,23 @@ function Login(props) {
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
                         placeholder='Enter Your Name'
-                        className='login-input'
+                        className='login-user'
                         onChange={handleLogin}
                         type='text'
                         name='username'
-                        autoComplete='false'
+                        autoComplete="off"
                     />
                     <FormControl
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
                         placeholder='Enter Your Password'
-                        className='login-input'
+                        className='login-pass'
                         onChange={handleLogin}
                         type='password'
                         name='password'
+                        autoComplete='off'
                     />
+                    <Button variant="primary">Sign Up</Button>
                 </InputGroup>
             </div>    
         </>

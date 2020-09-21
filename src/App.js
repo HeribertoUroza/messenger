@@ -11,7 +11,7 @@ function App() {
   const [username, getUserName] = useState('');
   const [password, getPassword] = useState('');
 
-  console.log('app',username,password)
+  
   return (
     <>
       <HashRouter>
@@ -25,7 +25,7 @@ function App() {
                   handlePassWord={ getPassword }
                   />  
                 )} />
-                
+
           </Switch>
       </HashRouter>
     </>
