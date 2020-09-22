@@ -22,21 +22,6 @@
     text-align: center;
 }
 
-/* .login-form {
-    grid-area: login-form;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    width: 100%
-} */
-
-/* .input-group {
-    width: 100%;
-    text-align: center;
-    grid-area: login-form;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-} */
-
 .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
     width: 100% !important;
     text-align: center;

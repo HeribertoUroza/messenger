@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // BOOTSTRAP IMPORTS
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -10,15 +10,25 @@ import Button from 'react-bootstrap/Button';
 import Logo from '../assets/Messenger_Logo.jpg'
 
 function Login(props) {
-    
+    const [loginOrSignUp, getLoginOrSignUp] = useState(false);
 
-    const handleLogin = e => {
+    const handleOnChange = e => {
         if(e.target.name === 'username'){
             props.handleUserName(e.target.value)
         } else {
             props.handlePassWord(e.target.value)
         }
-    }
+    };
+
+    const handleLoginOrSignUpButton = e => {
+        e.preventDefault();
+        !loginOrSignUp ? getLoginOrSignUp(true) : getLoginOrSignUp(false)
+    };
+
+    const handleLoginOrSignUp = e => {
+        e.preventDefault();
+        props.handleSignUpOrLogIn(loginOrSignUp)
+    };
 
     return (
         <>
@@ -33,9 +43,9 @@ function Login(props) {
                     <FormControl
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
-                        placeholder='Enter Your Name'
+                        placeholder='Enter Your Username'
                         className='login-user'
-                        onChange={handleLogin}
+                        onChange={handleOnChange}
                         type='text'
                         name='username'
                         autoComplete="off"
@@ -45,12 +55,18 @@ function Login(props) {
                         aria-describedby="inputGroup-sizing-default"
                         placeholder='Enter Your Password'
                         className='login-pass'
-                        onChange={handleLogin}
+                        onChange={handleOnChange}
                         type='password'
                         name='password'
                         autoComplete='off'
                     />
-                    <Button variant="primary">Sign Up</Button>
+                    {
+                        loginOrSignUp ?                            
+                                <><Button variant="primary" onClick={handleLoginOrSignUp}>Sign Up</Button>
+                                    <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton}>Click Here</button></span></>
+                            :   <><Button variant="primary" onClick={handleLoginOrSignUp} >Log In</Button>
+                                    <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton}>Click Here</button></span></>
+                    }
                 </InputGroup>
             </div>    
         </>

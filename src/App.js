@@ -10,7 +10,10 @@ import './App.css';
 function App() {
   const [username, getUserName] = useState('');
   const [password, getPassword] = useState('');
-
+  
+  const handleSignUpOrLogIn = loginOrSignUp => {
+    console.log(loginOrSignUp)
+  }
   
   return (
     <>
@@ -23,6 +26,7 @@ function App() {
                 <Login 
                   handleUserName={ getUserName } 
                   handlePassWord={ getPassword }
+                  handleSignUpOrLogIn={ handleSignUpOrLogIn }
                   />  
                 )} />
 
