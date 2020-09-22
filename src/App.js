@@ -13,6 +13,8 @@ function App() {
   
   const handleSignUpOrLogIn = loginOrSignUp => {
     console.log(loginOrSignUp)
+    // IF TRUE SIGN UP, ELSE LOGIN
+    
   }
   
   return (

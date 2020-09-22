@@ -39,7 +39,8 @@ function Login(props) {
                     rounded 
                 />
                 <h1 className='login-title' >Messenger</h1>
-                <InputGroup className="mb-3 login-form">
+                <form className='login-form'>
+                <InputGroup className="mb-3 ">
                     <FormControl
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
@@ -63,11 +64,12 @@ function Login(props) {
                     {
                         loginOrSignUp ?                            
                                 <><Button variant="primary" onClick={handleLoginOrSignUp}>Sign Up</Button>
-                                    <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton}>Click Here</button></span></>
+                                    <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                             :   <><Button variant="primary" onClick={handleLoginOrSignUp} >Log In</Button>
-                                    <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton}>Click Here</button></span></>
+                                    <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                     }
                 </InputGroup>
+                </form>
             </div>    
         </>
     )

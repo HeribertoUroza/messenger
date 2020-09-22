@@ -22,6 +22,10 @@
     text-align: center;
 }
 
+.login-form {
+    grid-area: login-form;
+}
+
 .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
     width: 100% !important;
     text-align: center;
@@ -31,4 +35,15 @@
     display: grid !important;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: auto;
+    grid-gap: 5%;
+}
+
+.LnS-switch {
+    color: #0074FD;
+    border: none;
+    background-color: white;
+}
+
+.LnS-switch:focus {
+    outline: none;
 }
