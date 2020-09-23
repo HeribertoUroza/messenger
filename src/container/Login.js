@@ -44,9 +44,6 @@ function Login(props) {
     const handleLoginOrSignUp = e => {
         e.preventDefault();
 
-        // props.handleSignUpOrLogIn(loginOrSignUp)
-        // history.push('/messages')
-
         loginOrSignUp ?
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(_ => {
@@ -75,8 +72,9 @@ function Login(props) {
                     rounded 
                 />
                 <h1 className='login-title' >Messenger</h1>
-                <form className='login-form'>
-                <InputGroup className="mb-3 ">
+                
+                    <InputGroup className="mb-3">
+                        <form className='form-container'>
                         <FormControl
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
@@ -97,18 +95,18 @@ function Login(props) {
                             name='password'
                             autoComplete='off'
                         />
+                        </form>
                     {
                         loginOrSignUp ?                            
                                 <>
-
-                                <Button variant="primary" onClick={handleLoginOrSignUp}>Sign Up</Button>
+                                <Button variant="primary" className='login-btn' onClick={handleLoginOrSignUp}>Sign Up</Button>
                                     <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                             :   <>
-                                <Button variant="primary" onClick={handleLoginOrSignUp} >Log In</Button>
+                                <Button variant="primary" className='login-btn' onClick={handleLoginOrSignUp} >Log In</Button>
                                     <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                     }
                 </InputGroup>
-                </form>
+                
             </div>    
         </>
     )

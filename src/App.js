@@ -26,6 +26,7 @@ function App() {
                   {...routeProps}
                   />  
                 )} />
+            {/* Messages Page */}
             <Route 
               path='/messages'
               exact
