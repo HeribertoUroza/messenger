@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom';
 
 // BOOTSTRAP IMPORTS
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,6 +12,7 @@ import Logo from '../assets/Messenger_Logo.jpg'
 
 function Login(props) {
     const [loginOrSignUp, getLoginOrSignUp] = useState(false);
+    const history = useHistory();
 
     const handleOnChange = e => {
         if(e.target.name === 'email'){
@@ -39,6 +41,7 @@ function Login(props) {
         e.preventDefault();
 
         props.handleSignUpOrLogIn(loginOrSignUp)
+        history.push('/messages')
     };
 
     return (

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, } from 'react-router-dom';
 import firebase from './firebase/firebase';
 
 // CONTAINERS
 import Login from './container/Login';
+import Messages from './container/Messages';
 
 // CSS
 import './App.css';
 
+
 function App() {
   const [email, getEmail] = useState('');
   const [password, getPassword] = useState('');
+  const [errorMessage, getError] = useState('');
 
   const handleSignUpOrLogIn = loginOrSignUp => {
     // IF TRUE SIGN UP, ELSE LOGIN
@@ -18,18 +21,19 @@ function App() {
     loginOrSignUp ? 
       firebase.auth().createUserWithEmailAndPassword(email,password)
         .then( _=>{
-          console.log('create', email)
+          this.props.history.push('#/messages')
         })
         .catch( error => {
-          console.log(email,password,error)
+          getError(error.message)
         })
       :
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then( _=>{
-          console.log('signed in', email)
+          console.log('worked')
         })
         .catch( error => {
-          console.log(error)
+          console.log(error.message)
+          getError(error.message)
         })
   }
   
@@ -39,15 +43,25 @@ function App() {
           <Switch>
             {/* Login Page */}
             <Route  
-              path='/' 
-              render={( props ) => (
+              path='/'
+              exact 
+              render={( routeProps ) => (
                 <Login 
                   handleEmail={ getEmail } 
                   handlePassWord={ getPassword }
                   handleSignUpOrLogIn={ handleSignUpOrLogIn }
+                  errorMessage={ errorMessage }
+                  {...routeProps}
                   />  
                 )} />
+            <Route 
+              path='/messages'
+              exact
+              render={( props ) => (
+                <Messages
 
+                  />
+                )} />
           </Switch>
       </HashRouter>
     </>
