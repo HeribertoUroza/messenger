@@ -13,8 +13,8 @@ function Login(props) {
     const [loginOrSignUp, getLoginOrSignUp] = useState(false);
 
     const handleOnChange = e => {
-        if(e.target.name === 'username'){
-            props.handleUserName(e.target.value)
+        if(e.target.name === 'email'){
+            props.handleEmail(e.target.value)
         } else {
             props.handlePassWord(e.target.value)
         }
@@ -22,11 +22,22 @@ function Login(props) {
 
     const handleLoginOrSignUpButton = e => {
         e.preventDefault();
-        !loginOrSignUp ? getLoginOrSignUp(true) : getLoginOrSignUp(false)
+        props.handleEmail('');
+        props.handlePassWord('');
+        let login_user = document.querySelector('.login-user');
+        let login_pass = document.querySelector('.login-pass');
+        login_user.value = '';
+        login_pass.value = '';
+
+        !loginOrSignUp? 
+            getLoginOrSignUp(true) 
+        :
+            getLoginOrSignUp(false)
     };
 
     const handleLoginOrSignUp = e => {
         e.preventDefault();
+
         props.handleSignUpOrLogIn(loginOrSignUp)
     };
 
@@ -41,31 +52,34 @@ function Login(props) {
                 <h1 className='login-title' >Messenger</h1>
                 <form className='login-form'>
                 <InputGroup className="mb-3 ">
-                    <FormControl
-                        aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder='Enter Your Username'
-                        className='login-user'
-                        onChange={handleOnChange}
-                        type='text'
-                        name='username'
-                        autoComplete="off"
-                    />
-                    <FormControl
-                        aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder='Enter Your Password'
-                        className='login-pass'
-                        onChange={handleOnChange}
-                        type='password'
-                        name='password'
-                        autoComplete='off'
-                    />
+                        <FormControl
+                            aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder='Enter Your Email'
+                            className='login-user'
+                            onChange={handleOnChange}
+                            type='email'
+                            name='email'
+                            autoComplete="off"
+                        />
+                        <FormControl
+                            aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder='Enter Your Password'
+                            className='login-pass'
+                            onChange={handleOnChange}
+                            type='password'
+                            name='password'
+                            autoComplete='off'
+                        />
                     {
                         loginOrSignUp ?                            
-                                <><Button variant="primary" onClick={handleLoginOrSignUp}>Sign Up</Button>
+                                <>
+
+                                <Button variant="primary" onClick={handleLoginOrSignUp}>Sign Up</Button>
                                     <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
-                            :   <><Button variant="primary" onClick={handleLoginOrSignUp} >Log In</Button>
+                            :   <>
+                                <Button variant="primary" onClick={handleLoginOrSignUp} >Log In</Button>
                                     <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                     }
                 </InputGroup>

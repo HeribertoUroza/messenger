@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+import firebase from './firebase/firebase';
 
 // CONTAINERS
 import Login from './container/Login';
@@ -8,13 +9,28 @@ import Login from './container/Login';
 import './App.css';
 
 function App() {
-  const [username, getUserName] = useState('');
+  const [email, getEmail] = useState('');
   const [password, getPassword] = useState('');
-  
+
   const handleSignUpOrLogIn = loginOrSignUp => {
-    console.log(loginOrSignUp)
     // IF TRUE SIGN UP, ELSE LOGIN
-    
+   
+    loginOrSignUp ? 
+      firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then( _=>{
+          console.log('create', email)
+        })
+        .catch( error => {
+          console.log(email,password,error)
+        })
+      :
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then( _=>{
+          console.log('signed in', email)
+        })
+        .catch( error => {
+          console.log(error)
+        })
   }
   
   return (
@@ -26,7 +42,7 @@ function App() {
               path='/' 
               render={( props ) => (
                 <Login 
-                  handleUserName={ getUserName } 
+                  handleEmail={ getEmail } 
                   handlePassWord={ getPassword }
                   handleSignUpOrLogIn={ handleSignUpOrLogIn }
                   />  
