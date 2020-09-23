@@ -36,7 +36,7 @@
 
 .input-group {
     display: grid !important;
-    grid-template-rows: 1fr .5fr 1fr;
+    grid-template-rows: 1fr .5fr .5fr 1fr;
     grid-template-columns: auto;
     grid-gap: 5%;
 }
@@ -58,4 +58,9 @@
 
 .LnS-switch:focus {
     outline: none;
+}
+
+.alert {
+    margin-bottom: 0rem;
+    font-size: .93rem;
 }

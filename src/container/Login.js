@@ -7,6 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 // LOGO IMPORT
 import Logo from '../assets/Messenger_Logo.jpg'
@@ -30,6 +31,7 @@ function Login(props) {
         e.preventDefault();
         getEmail('');
         getPassWord('');
+        getError('');
         let login_user = document.querySelector('.login-user');
         let login_pass = document.querySelector('.login-pass');
         login_user.value = '';
@@ -58,7 +60,6 @@ function Login(props) {
                     history.push('/messages')
                 })
                 .catch(error => {
-                    console.log(error.message)
                     getError(error.message)
                 })
     };
@@ -72,7 +73,6 @@ function Login(props) {
                     rounded 
                 />
                 <h1 className='login-title' >Messenger</h1>
-                
                     <InputGroup className="mb-3">
                         <form className='form-container'>
                         <FormControl
@@ -99,9 +99,15 @@ function Login(props) {
                     {
                         loginOrSignUp ?                            
                                 <>
+                                {
+                                    errorMessage ? <Alert variant='danger' >{errorMessage}</Alert> : ''
+                                }
                                 <Button variant="primary" className='login-btn' onClick={handleLoginOrSignUp}>Sign Up</Button>
                                     <span>Already Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                             :   <>
+                                {
+                                    errorMessage ? <Alert variant='danger' >{errorMessage}</Alert> : ''
+                                }
                                 <Button variant="primary" className='login-btn' onClick={handleLoginOrSignUp} >Log In</Button>
                                     <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                     }
