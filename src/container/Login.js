@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import firebase from '../firebase/firebase';
 
 // BOOTSTRAP IMPORTS
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,21 +12,24 @@ import Button from 'react-bootstrap/Button';
 import Logo from '../assets/Messenger_Logo.jpg'
 
 function Login(props) {
+    const [email, getEmail] = useState('');
+    const [password, getPassWord] = useState('');
     const [loginOrSignUp, getLoginOrSignUp] = useState(false);
+    const [errorMessage, getError] = useState('');
     const history = useHistory();
 
     const handleOnChange = e => {
         if(e.target.name === 'email'){
-            props.handleEmail(e.target.value)
+            getEmail(e.target.value)
         } else {
-            props.handlePassWord(e.target.value)
+            getPassWord(e.target.value)
         }
     };
 
     const handleLoginOrSignUpButton = e => {
         e.preventDefault();
-        props.handleEmail('');
-        props.handlePassWord('');
+        getEmail('');
+        getPassWord('');
         let login_user = document.querySelector('.login-user');
         let login_pass = document.querySelector('.login-pass');
         login_user.value = '';
@@ -40,8 +44,26 @@ function Login(props) {
     const handleLoginOrSignUp = e => {
         e.preventDefault();
 
-        props.handleSignUpOrLogIn(loginOrSignUp)
-        history.push('/messages')
+        // props.handleSignUpOrLogIn(loginOrSignUp)
+        // history.push('/messages')
+
+        loginOrSignUp ?
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(_ => {
+                    history.push('/messages')
+                })
+                .catch(error => {
+                    getError(error.message)
+                })
+            :
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(_ => {
+                    history.push('/messages')
+                })
+                .catch(error => {
+                    console.log(error.message)
+                    getError(error.message)
+                })
     };
 
     return (
