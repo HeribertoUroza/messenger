@@ -48,7 +48,8 @@ function Login(props) {
 
         loginOrSignUp ?
             firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(_ => {
+                .then(data => {
+                    props.getUser(data.user.email)
                     history.push('/messages')
                 })
                 .catch(error => {
@@ -56,7 +57,8 @@ function Login(props) {
                 })
             :
             firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(_ => {
+                .then(data => {
+                    props.getUser(data.user.email)
                     history.push('/messages')
                 })
                 .catch(error => {
