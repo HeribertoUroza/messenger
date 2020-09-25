@@ -98,6 +98,7 @@ function Login(props) {
                             autoComplete='off'
                         />
                         </form>
+                        <div className='login-button-container'>
                     {
                         loginOrSignUp ?                            
                                 <>
@@ -113,6 +114,7 @@ function Login(props) {
                                 <Button variant="primary" className='login-btn' onClick={handleLoginOrSignUp} >Log In</Button>
                                     <span>Don't Have an Account? <button onClick={handleLoginOrSignUpButton} className='LnS-switch'>Click Here</button></span></>
                     }
+                        </div>
                 </InputGroup>
                 
             </div>    

@@ -1,4 +1,4 @@
-/* Login Page */
+/* LOGIN PAGE ---------- */
 
 .login-container {
     height: 100vh;
@@ -26,24 +26,21 @@
     grid-area: login-form;
 }
 
-.form-control {
-    text-align: center;
-}
-
-.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
-    width: 100% !important;
-}
-
-.input-group {
+.form-container {
     display: grid !important;
-    grid-template-rows: 1fr .5fr .5fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: auto;
     grid-gap: 5%;
+    width: 100%;
+    margin-bottom: 5%;
 }
 
-.form-container {
+.login-button-container{
     display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto;
     grid-gap: 5%;
+    width: 100%;
 }
 
 .login-btn {
@@ -61,6 +58,8 @@
 }
 
 .alert {
-    margin-bottom: 0rem;
+    margin-bottom: 0rem !important;
     font-size: .93rem;
 }
+
+/* MESSAGES PAGE ---------- */
