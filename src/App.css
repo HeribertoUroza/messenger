@@ -83,3 +83,9 @@
     grid-area: messages-input;
     position: sticky;
 }
+
+/* SINGLE MESSAGE */
+
+.s_Message_con {
+    padding: 5%;
+}

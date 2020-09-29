@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router';
 
 // COMPONENT
@@ -13,6 +13,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 function Messages() {
+    const [ textInput, getTextInput ] = useState('');
+
     const data = [
         {
             email: 'person 1',
@@ -36,6 +38,13 @@ function Messages() {
         },
     ];
 
+    const user = useContext(AuthContext)
+
+    const handleOnChange = e => {
+        getTextInput(e.target.value)
+    };
+
+
     return (
         <>
             <AuthContext.Consumer>
@@ -50,7 +59,8 @@ function Messages() {
                                                 data.map(( e,i ) => {
                                                     return (
                                                         <SingleMessage
-                                                            data-key={i}
+                                                            key={i}
+                                                            data_key={i}
                                                             email={e.email}
                                                             message={e.message}
                                                             fromMe={e.fromMe}
@@ -64,6 +74,7 @@ function Messages() {
                                                 <FormControl
                                                     aria-label="messageText"
                                                     aria-describedby="basic-addon2"
+                                                    onChange={handleOnChange}
                                                 />
                                                 <InputGroup.Append>
                                                     <Button variant="outline-secondary">Send</Button>
