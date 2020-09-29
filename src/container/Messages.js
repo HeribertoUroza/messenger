@@ -45,6 +45,8 @@ function Messages() {
 
     const handleSubmit = e => {
         e.preventDefault();
+        if(!textInput) return;
+        
         let newData = [...data]
 
         newData.push({
