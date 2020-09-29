@@ -6,10 +6,12 @@ function SingleMessage(props) {
         if(fromMe) {
             return {
                 marginLeft: '20%',
+                boxShadow: '6px 4px 17px 2px rgba(0,0,255,0.33)'
             }
         } else {
             return {
-                marginRight: '20%'
+                marginRight: '20%',
+                boxShadow: '-6px 4px 17px 2px rgba(0,0,255,0.33)'
             }
         }
     }

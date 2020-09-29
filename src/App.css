@@ -91,9 +91,14 @@
 }
 
 .s_Message_label {
-    font-size: .5rem;
+    font-size: .9rem;
+    border-radius: 20px 20px 20px 20px;
+    padding: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
 }
 
 .s_Message {
-    border: 1px solid black;
+    border-radius: 25px 25px 25px 25px;
+    padding: 5%
 }
