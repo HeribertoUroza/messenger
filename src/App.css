@@ -89,3 +89,11 @@
 .s_Message_con {
     padding: 5%;
 }
+
+.s_Message_label {
+    font-size: .5rem;
+}
+
+.s_Message {
+    border: 1px solid black;
+}
