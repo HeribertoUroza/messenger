@@ -63,3 +63,23 @@
 }
 
 /* MESSAGES PAGE ---------- */
+
+.messages-container {
+    display: grid;
+    grid-template-rows: 95vh 5vh;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "messages-all"
+    "messages-input";
+    overflow: hidden;
+}
+
+.messages-all {
+    grid-area: messages-all;
+    overflow: scroll;
+}
+
+.messages-input {
+    grid-area: messages-input;
+    position: sticky;
+}
