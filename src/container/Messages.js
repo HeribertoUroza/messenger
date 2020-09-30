@@ -43,7 +43,7 @@ function Messages() {
         getTextInput(e.target.value)
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         if(!textInput) return;
         
@@ -57,7 +57,9 @@ function Messages() {
         getData(newData);
         getTextInput('');
         let message_text_input = document.querySelector('.message-text-input');
+        let messages_all = document.querySelector(".messages-all")
         message_text_input.value = '';
+        messages_all.scrollTop = await messages_all.scrollHeight;
     }
 
 
