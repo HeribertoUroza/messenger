@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
+import socketIOClient from 'socket.io-client';
 
 // COMPONENT
 import SingleMessage from '../component/SingleMessage';
@@ -14,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 
 function Messages() {
     const [ textInput, getTextInput ] = useState('');
+    const [ response, setResponse ] = useState('');
     const [data, getData] = useState([
         {
             email: 'person 1',
@@ -35,7 +37,7 @@ function Messages() {
             message: 'Ut at sempe a nisl lalit.',
             fromMe: false
         },
-    ])
+    ]);
 
     const user = useContext(AuthContext)
 
@@ -60,9 +62,16 @@ function Messages() {
         let messages_all = document.querySelector(".messages-all")
         message_text_input.value = '';
         messages_all.scrollTop = await messages_all.scrollHeight;
-    }
+    };
 
+    useEffect( _=> {
+        const socket = socketIOClient('http://192.168.0.128:5000')
+        socket.on('FromApi', data => {
+            setResponse(data);
+        });
 
+    }, []);
+    console.log(response)
     return (
         <>
             <AuthContext.Consumer>
