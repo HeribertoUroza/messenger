@@ -16,7 +16,7 @@ import Button from 'react-bootstrap/Button';
 function Messages() {
     const [ textInput, getTextInput ] = useState('');
     const [ response, setResponse ] = useState('');
-    const [data, getData] = useState([
+    const [ data, getData ] = useState([
         {
             email: 'person 1',
             message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et felis id leo scelerisque laoreet. Maecenas vitae nulla luctus erat et.',
@@ -40,6 +40,7 @@ function Messages() {
     ]);
 
     const user = useContext(AuthContext)
+    const socket = socketIOClient('http://192.168.0.128:5000');
 
     const handleOnChange = e => {
         getTextInput(e.target.value)
@@ -51,33 +52,49 @@ function Messages() {
         
         let newData = [...data]
 
-        newData.push({
+        // newData.push({
+        //     email: user,
+        //     message: textInput,
+        //     fromMe: true
+        // })
+
+        // getData(newData);
+
+        socket.emit('chat', {
             email: user,
             message: textInput,
             fromMe: true
         })
-        getData(newData);
+
+        socket.on('chat', data => {
+            newData.push(data)
+            getData(newData)
+        })
+
         getTextInput('');
         let message_text_input = document.querySelector('.message-text-input');
         let messages_all = document.querySelector(".messages-all")
         message_text_input.value = '';
         messages_all.scrollTop = await messages_all.scrollHeight;
+
     };
 
     useEffect( _=> {
-        const socket = socketIOClient('http://192.168.0.128:5000')
-        socket.on('FromApi', data => {
+        socket.on('FromAPI', data => {
             setResponse(data);
         });
 
+        return () => socket.disconnect();
     }, []);
+
     console.log(response)
+
     return (
         <>
             <AuthContext.Consumer>
                 {
                     (isUser) => {
-                        if(isUser){
+                        if(!isUser){
                             return (
                                 <>
                                     <div className='messages-container'>
