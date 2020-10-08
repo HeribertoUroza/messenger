@@ -16,28 +16,7 @@ import Button from 'react-bootstrap/Button';
 function Messages() {
     const [ textInput, getTextInput ] = useState('');
     const [ response, setResponse ] = useState('');
-    const [ data, getData ] = useState([
-        {
-            email: 'person 1',
-            message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et felis id leo scelerisque laoreet. Maecenas vitae nulla luctus erat et.',
-            fromMe: true
-        },
-        {
-            email: 'person 2',
-            message: 'Ut semper, leo id auctor tincidunt, risuscies. Morbi ac ante in enim suscipit scelerisque eget a dui. Vestibulum efficitur placerat urna. Etiam laoreet euismod nunc, ac aliquet tellus feugiat at. Nullam vitae eros nec tellus suscipit iaculis non eget est. Donec dictum vel tortor et gravida. Aliquam at sapien in eros placerat aliquam. Nunc fermentum lectus ac dui luctus malesuada. Ut ultrices, velit sed dignissi velit sed urna. In vestibulum, nunc in volutpat suscipit, nulla tellus condimentum nisi, ut molestie ipsum nibh in sapien. In eu mauris quis arcu pulvinar gravida.',
-            fromMe: false
-        },
-        {
-            email: 'person 1',
-            message: 'Integer id viverra nisl, non molestie lacus. uis erat libero.',
-            fromMe: true
-        },
-        {
-            email: 'person 3',
-            message: 'Ut at sempe a nisl lalit.',
-            fromMe: false
-        },
-    ]);
+    const [ data, getData ] = useState([]);
 
     const user = useContext(AuthContext)
     const socket = socketIOClient('http://192.168.0.128:5000');
@@ -84,7 +63,7 @@ function Messages() {
             setResponse(data);
         });
 
-        return () => socket.disconnect();
+        // return () => socket.disconnect();
     }, []);
 
     console.log(response)
