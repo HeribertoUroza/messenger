@@ -12,7 +12,8 @@
 
 ### Research Info
 - https://medium.com/@coderacademy/you-can-build-an-fb-messenger-style-chat-app-with-reactjs-heres-how-intermediate-211b523838ad
-
+- https://www.valentinog.com/blog/socket-react/
+- https://socket.io/get-started/chat#Introduction
 
 <hr/>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
