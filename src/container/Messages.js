@@ -31,18 +31,10 @@ function Messages() {
         
         let newData = [...data]
 
-        // newData.push({
-        //     email: user,
-        //     message: textInput,
-        //     fromMe: true
-        // })
-
-        // getData(newData);
-
         socket.emit('chat', {
             email: user,
             message: textInput,
-            fromMe: true
+            fromMe: false
         })
 
         socket.on('chat', data => {
@@ -58,13 +50,13 @@ function Messages() {
 
     };
 
-    useEffect( _=> {
-        socket.on('FromAPI', data => {
-            setResponse(data);
-        });
+    // useEffect( _=> {
+    //     socket.on('FromAPI', data => {
+    //         setResponse(data);
+    //     });
 
-        // return () => socket.disconnect();
-    }, []);
+    //     return () => socket.disconnect();
+    // });
 
     console.log(response)
 
@@ -73,7 +65,7 @@ function Messages() {
             <AuthContext.Consumer>
                 {
                     (isUser) => {
-                        if(!isUser){
+                        if(isUser){
                             return (
                                 <>
                                     <div className='messages-container'>

@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+// CONTEXT
+import AuthContext from '../context/AuthContext';
 
 function SingleMessage(props) {
-    
+    let currentUser = useContext(AuthContext)
+    let fromMe = false
+    if(currentUser === props.email){
+        fromMe = true
+    }
+
     const handleMessageStyle = ( fromMe ) => {
         if(fromMe) {
             return {
@@ -42,10 +50,10 @@ function SingleMessage(props) {
     return (
         <>
             <div className='s_Message_con' key={props.data_key} >
-                    <div className='s_l_container' style={handleLableContainer(props.fromMe)}>
-                        <label className='s_Message_label' style={handleLableStyle(props.fromMe)}>{props.email}</label>
+                    <div className='s_l_container' style={handleLableContainer(fromMe)}>
+                        <label className='s_Message_label' style={handleLableStyle(fromMe)}>{props.email}</label>
                     </div>
-                <div className='s_Message' style={handleMessageStyle(props.fromMe)} >{props.message}</div>
+                <div className='s_Message' style={handleMessageStyle(fromMe)} >{props.message}</div>
             </div>
         </>
     )
