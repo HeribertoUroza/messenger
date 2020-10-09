@@ -15,12 +15,12 @@ import Button from 'react-bootstrap/Button';
 
 function Messages() {
     const [ textInput, getTextInput ] = useState('');
-    const [ response, setResponse ] = useState('');
+    const [ time, setTime ] = useState('');
     const [ data, getData ] = useState([]);
 
-    const user = useContext(AuthContext)
+    const user = useContext(AuthContext);
     const socket = socketIOClient('http://192.168.0.128:5000');
-
+    
     const handleOnChange = e => {
         getTextInput(e.target.value)
     };
@@ -34,7 +34,8 @@ function Messages() {
         socket.emit('chat', {
             email: user,
             message: textInput,
-            fromMe: false
+            fromMe: false,
+            time: time
         })
 
         socket.on('chat', data => {
@@ -44,21 +45,18 @@ function Messages() {
 
         getTextInput('');
         let message_text_input = document.querySelector('.message-text-input');
-        let messages_all = document.querySelector(".messages-all")
+        let messages_all = document.querySelector(".messages-all");
         message_text_input.value = '';
         messages_all.scrollTop = await messages_all.scrollHeight;
-
     };
 
-    // useEffect( _=> {
-    //     socket.on('FromAPI', data => {
-    //         setResponse(data);
-    //     });
+    useEffect( _=> {
+        socket.on('fromAPT', data => {
+            setTime(data);
+        });
 
-    //     return () => socket.disconnect();
-    // });
-
-    console.log(response)
+        //return ()=> socket.disconnect();
+    });
 
     return (
         <>
@@ -79,6 +77,7 @@ function Messages() {
                                                             email={e.email}
                                                             message={e.message}
                                                             fromMe={e.fromMe}
+                                                            time={e.time}
                                                         />
                                                     )
                                                 })

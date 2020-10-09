@@ -51,7 +51,7 @@ function SingleMessage(props) {
         <>
             <div className='s_Message_con' key={props.data_key} >
                     <div className='s_l_container' style={handleLableContainer(fromMe)}>
-                        <label className='s_Message_label' style={handleLableStyle(fromMe)}>{props.email}</label>
+                        <label className='s_Message_label' style={handleLableStyle(fromMe)}>{props.email}{props.time}</label>
                     </div>
                 <div className='s_Message' style={handleMessageStyle(fromMe)} >{props.message}</div>
             </div>
