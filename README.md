@@ -1,4 +1,6 @@
-# Mock-Messenger App
+# Mock-Messenger App [![Netlify Status](https://api.netlify.com/api/v1/badges/282eee22-b6ae-40cc-a1b6-bdb75b0ba76e/deploy-status)](https://app.netlify.com/sites/ecstatic-yalow-03d37e/deploys)
+
+## [Live Link](https://ecstatic-yalow-03d37e.netlify.app)
 
 ### TODO
 1. Open app in a fixed window size. 
