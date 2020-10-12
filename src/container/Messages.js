@@ -19,7 +19,7 @@ function Messages() {
     const [ data, getData ] = useState([]);
 
     const user = useContext(AuthContext);
-    const socket = socketIOClient('http://192.168.0.128:5000');
+    const socket = socketIOClient('https://mockmessenger.herokuapp.com/');
     
     const handleOnChange = e => {
         getTextInput(e.target.value)
