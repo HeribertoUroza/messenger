@@ -4,6 +4,9 @@
 
 ### TODO
 1. Open app in a fixed window size. 
+5. Add wake up function to start socket.
+6. fix useEffect warning
+7. Finish styling for input field
 
 ### COMPLETED
 2. Research what else is needed for app to run.
