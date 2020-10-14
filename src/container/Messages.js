@@ -19,7 +19,6 @@ function Messages() {
     const [ data, getData ] = useState([]);
 
     const user = useContext(AuthContext);
-    const socket = socketIOClient('https://mockmessenger.herokuapp.com/');
     
     const handleOnChange = e => {
         getTextInput(e.target.value)
@@ -30,6 +29,7 @@ function Messages() {
         if(!textInput) return;
         
         let newData = [...data]
+        const socket = socketIOClient('https://mockmessenger.herokuapp.com/');
 
         socket.emit('chat', {
             email: user,
@@ -51,6 +51,7 @@ function Messages() {
     };
 
     useEffect( _=> {
+        const socket = socketIOClient('https://mockmessenger.herokuapp.com/');
         socket.on('fromAPT', data => {
             setTime(data);
         });
@@ -59,20 +60,20 @@ function Messages() {
     });
 
     useEffect( _=> {
-        let newData = [...data];
+        let newData = []
+        const socket = socketIOClient('https://mockmessenger.herokuapp.com/');
 
         socket.emit('chat', {
             email: 'Heri',
-            message: "Welcome to Heri's Messenger App. Feel Free To Start Typing Below",
+            message: "Welcome to My Messenger App. Feel Free To Start Typing Below",
             fromMe: false,
-            time: time
         });
 
-        socket.on('chat', data => {
-            newData.push(data)
+        socket.on('chat', res => {
+            newData.push(res)
             getData(newData)
         });
-    });
+    },[]);
 
     return (
         <>
