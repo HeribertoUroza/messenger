@@ -2,13 +2,14 @@
 
 ## [Live Link](https://ecstatic-yalow-03d37e.netlify.app)
 
-### TODO
-1. Open app in a fixed window size. 
+### TODO  
 5. Add wake up function to start socket.
 6. fix useEffect warning
 7. Finish styling for input field
+8. Create gifs of messages working
 
 ### COMPLETED
+1. Open app in a fixed window size. or Body width.
 2. Research what else is needed for app to run.
     - socket.io
 3. Implement FireBase for logging in
