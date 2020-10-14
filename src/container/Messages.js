@@ -72,14 +72,14 @@ function Messages() {
             newData.push(data)
             getData(newData)
         });
-    },[]);
+    });
 
     return (
         <>
             <AuthContext.Consumer>
                 {
                     (isUser) => {
-                        if(!isUser){
+                        if(isUser){
                             return (
                                 <>
                                     <div className='messages-container'>
