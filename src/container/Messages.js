@@ -63,7 +63,7 @@ function Messages() {
             <AuthContext.Consumer>
                 {
                     (isUser) => {
-                        if(isUser){
+                        if(!isUser){
                             return (
                                 <>
                                     <div className='messages-container'>
@@ -92,7 +92,10 @@ function Messages() {
                                                     className='message-text-input'
                                                 />
                                                 <InputGroup.Append>
-                                                    <Button variant="outline-secondary" onClick={handleSubmit}>Send</Button>
+                                                    <Button 
+                                                        variant="outline-secondary"
+                                                        className='messages-btn' 
+                                                        onClick={handleSubmit}>Send</Button>
                                                 </InputGroup.Append>
                                             </InputGroup>
                                         </div>

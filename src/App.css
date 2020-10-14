@@ -94,6 +94,21 @@ body {
     position: sticky;
 }
 
+.messages-btn {
+    border-color: #0074fd !important;
+    color: #0074fd !important;
+}
+
+.messages-btn:active {
+    background-color: #0074fd !important;
+    color: white !important;
+}
+
+.messages-btn:hover {
+    background-color: #0074fd !important;
+    color: white !important;
+}
+
 /* SINGLE MESSAGE */
 
 .s_Message_con {
