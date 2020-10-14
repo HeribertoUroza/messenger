@@ -58,6 +58,22 @@ function Messages() {
         //return ()=> socket.disconnect();
     });
 
+    useEffect( _=> {
+        let newData = [...data];
+
+        socket.emit('chat', {
+            email: 'Heri',
+            message: "Welcome to Heri's Messenger App. Feel Free To Start Typing Below",
+            fromMe: false,
+            time: time
+        });
+
+        socket.on('chat', data => {
+            newData.push(data)
+            getData(newData)
+        });
+    },[]);
+
     return (
         <>
             <AuthContext.Consumer>

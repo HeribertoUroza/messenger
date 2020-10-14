@@ -3,9 +3,7 @@
 ## [Live Link](https://ecstatic-yalow-03d37e.netlify.app)
 
 ### TODO  
-5. Add wake up function to start socket.
 6. fix useEffect warning
-7. Finish styling for input field
 8. Create gifs of messages working
 
 ### COMPLETED
@@ -14,6 +12,8 @@
     - socket.io
 3. Implement FireBase for logging in
 4. Create messages style 
+5. Add wake up function to start socket
+7. Finish styling for input field
 
 ### Research Info
 - https://medium.com/@coderacademy/you-can-build-an-fb-messenger-style-chat-app-with-reactjs-heres-how-intermediate-211b523838ad
