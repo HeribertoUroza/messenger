@@ -1,3 +1,13 @@
+body {
+    display: grid;
+    grid-template-columns: auto 500px auto;
+    grid-template-areas: ". root .";
+}
+
+.root {
+    grid-area: root;
+}
+
 /* LOGIN PAGE ---------- */
 
 .login-container {
